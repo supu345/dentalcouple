@@ -13,15 +13,19 @@ export const NavbarLinks = [
   },
   {
     name: "About",
-    link: "/",
+    link: "/about",
   },
   {
     name: "Blogs",
     link: "/",
   },
   {
-    name: "Best Places",
-    link: "/",
+    name: "Services",
+    link: "/services",
+  },
+  {
+    name: "Contact",
+    link: "/contact",
   },
 ];
 

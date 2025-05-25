@@ -29,7 +29,7 @@ const Footer = () => {
 
   return (
     <div>
-      <footer className="relative bg-cover bg-center bg-no-repeat text-white mt-[100px]  ">
+      <footer className="relative bg-cover bg-center bg-no-repeat text-white  ">
         <div className="absolute inset-0 bg-[#15B392] "></div>
         <motion.div
           variants={SlideUp(0.5)}

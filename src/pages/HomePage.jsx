@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import { TbDental } from "react-icons/tb";
@@ -7,10 +7,87 @@ import dental1 from "../assets/dental1.png";
 import { PiStarFourFill } from "react-icons/pi";
 import Service from "../components/Service";
 import WhyChoose from "../components/WhyChoose";
+import Blogs from "../components/Blogs";
+import {
+  FaKaaba,
+  FaUserCheck,
+  FaPrayingHands,
+  FaCalendarAlt,
+  FaFemale,
+  FaTshirt,
+  FaClock,
+  FaPassport,
+  FaChild,
+  FaClipboardList,
+} from "react-icons/fa";
+import { CiCalendarDate } from "react-icons/ci";
+import { FaHandHoldingMedical } from "react-icons/fa";
+import { PiHospitalFill } from "react-icons/pi";
+import Tesstimonials from "../components/Tesstimonials";
 const HomePage = () => {
+  const [activeIndex, setActiveIndex] = useState(null); // Default to first item open
+
+  const faqs = [
+    {
+      question: "Book an Appointement",
+      answer:
+        "The goal of our clinic is to provide friendly, caring dentistry and the highest level of general, cosmetic, ents.",
+      icon: <CiCalendarDate />,
+    },
+    {
+      question: "What conditions can manual therapy treat?",
+      answer:
+        "The goal of our clinic is to provide friendly, caring dentistry and the highest level of general, cosmetic, ents.",
+      icon: <FaHandHoldingMedical />,
+    },
+    {
+      question: "Exper Care",
+      answer:
+        "The goal of our clinic is to provide friendly, caring dentistry and the highest level of general, cosmetic, ents.",
+      icon: <PiHospitalFill />,
+    },
+    {
+      question: "When is the best time to perform Umrah?",
+      answer: "Umrah can be performed year-round...",
+      icon: <FaCalendarAlt />,
+    },
+    {
+      question: "Can women perform Hajj or Umrah without a Mahram?",
+      answer: "Women under 45 need a Mahram...",
+      icon: <FaFemale />,
+    },
+    {
+      question: "What is Ihram, and how do I enter it?",
+      answer: "Ihram is a state of spiritual purity...",
+      icon: <FaTshirt />,
+    },
+    {
+      question: "How long does Hajj take?",
+      answer: "Hajj typically spans 5 to 6 days...",
+      icon: <FaClock />,
+    },
+    {
+      question: "What documents are required for a Hajj or Umrah visa?",
+      answer: "A valid passport, a completed application...",
+      icon: <FaPassport />,
+    },
+    {
+      question: "Can children accompany parents for Hajj or Umrah?",
+      answer: "Yes, children can accompany parents...",
+      icon: <FaChild />,
+    },
+    {
+      question: "What are the key preparations for Hajj or Umrah?",
+      answer: "Preparations include physical fitness...",
+      icon: <FaClipboardList />,
+    },
+  ];
+
+  const toggleFAQ = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
   return (
     <div>
-      <Navbar />
       {/* WHO WE ARE */}
       <div className="flex flex-col md:flex-row lg:flex-row gap-6 mt-[200px] px-8">
         <div className="w-1/2 item-center">
@@ -80,7 +157,63 @@ const HomePage = () => {
       </div>
       <Service />
       <WhyChoose />
-      <Footer />
+      <div className="py-9 px-7 flex flex-row gap-5">
+        <div className="w-1/2">
+          <img
+            src="https://images.pexels.com/photos/6627420/pexels-photo-6627420.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="image"
+            className="h-[550px] object-cover rounded-4xl"
+          />
+        </div>
+        <div className="w-1/2">
+          <div className="px-6">
+            <div className="flex  mt-9 mb-5">
+              <div className="flex flex-row gap-2 items-center text-[#15B392]">
+                <BsStars />
+                <p className="uppercase font-bold text-[#15B392]">
+                  OUR SERVICES
+                </p>
+                <TbDental className="mt-1 font-bold" />
+              </div>
+            </div>
+            <p className="text-5xl font-bold mb-6">
+              <span className="text-[#15B392]"> What We Do for</span> Your Teeth
+            </p>
+            <p className="mb-6">
+              We are committed to sustainability. Our clinic practices
+              eco-friendly initiatives like digital records to reduce paper
+              waste and energy-efficient equipment.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 relative">
+            {faqs.slice(0, 3).map((faq, index) => (
+              <div
+                key={index}
+                className="border border-[#15B392] rounded-lg overflow-hidden  w-[90%] mx-auto bg-white bg-opacity-80"
+              >
+                <button
+                  className="w-full flex justify-between items-center p-4 bg-gray-100 hover:bg-gray-200"
+                  onClick={() => toggleFAQ(index)}
+                >
+                  <div className="flex items-center gap-2 text-black font-bold text-xl">
+                    <span className="text-3xl text-[#15B392]">{faq.icon} </span>
+                    <span>{faq.question}</span>
+                  </div>
+                  <span className="text-md">
+                    {activeIndex === index ? "-" : "+"}
+                  </span>
+                </button>
+                {activeIndex === index && (
+                  <div className="p-4 bg-white text-gray-700">{faq.answer}</div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <Tesstimonials />
+      <Blogs />
     </div>
   );
 };

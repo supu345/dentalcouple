@@ -5,6 +5,7 @@ import { PiMapPinLight } from "react-icons/pi";
 import { FaFacebookF, FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import { BsStars } from "react-icons/bs";
 import { TbDental } from "react-icons/tb";
+import MessageForm from "../components/MessageForm";
 const ContactPage = () => {
   return (
     <div className="mt-[80px]">
@@ -31,9 +32,9 @@ const ContactPage = () => {
           {/* <div className="w-16 h-1 bg-white mt-6 mb-6"></div> */}
         </div>
       </div>
-      <div className="px-6 py-[100px] flex flex-row gap-8">
+      <div className="px-6 py-[100px] flex flex-col md:flex-row gap-8">
         {/*1*/}
-        <div className="w-1/3 bg-gradient-to-r from-green-100 via-teal-100 to-blue-100 text-center justify-center items-center rounded-2xl">
+        <div className="w-full md:w-1/3 bg-gradient-to-r from-green-100 via-teal-100 to-blue-100 text-center justify-center items-center rounded-2xl">
           <div className=" py-8  text-center flex justify-center items-center">
             <PiMapPinLight
               className="text-8xl p-6 text-white rounded-full
@@ -50,7 +51,7 @@ const ContactPage = () => {
           </p>
         </div>
         {/*2*/}
-        <div className="w-1/3 bg-gradient-to-r from-green-100 via-teal-100 to-blue-100 text-center justify-center items-center rounded-2xl">
+        <div className="w-full md:w-1/3 bg-gradient-to-r from-green-100 via-teal-100 to-blue-100 text-center justify-center items-center rounded-2xl">
           <div className=" py-8  text-center flex justify-center items-center">
             <PiMapPinLight
               className="text-8xl p-6 text-white rounded-full
@@ -68,7 +69,7 @@ const ContactPage = () => {
         </div>
 
         {/*3*/}
-        <div className="w-1/3 bg-gradient-to-r from-green-100 via-teal-100 to-blue-100 text-center justify-center items-center rounded-2xl">
+        <div className="w-full md:w-1/3 bg-gradient-to-r from-green-100 via-teal-100 to-blue-100 text-center justify-center items-center rounded-2xl">
           <div className=" py-8  text-center flex justify-center items-center">
             <PiMapPinLight
               className="text-8xl p-6 text-white rounded-full
@@ -87,7 +88,7 @@ const ContactPage = () => {
       </div>
 
       {/* 2 div */}
-
+      {/* 
       <div className="flex flex-col md:flex-row gap-6 px-6 bg-gradient-to-r from-green-100 via-teal-100 to-blue-100 py-[100px]">
         <div className="w-full md:w-1/2 px-6 ">
           <form action="https://getform.io/f/bxooowga" method="POST">
@@ -145,7 +146,8 @@ const ContactPage = () => {
           />
         </div>
         <div></div>
-      </div>
+      </div> */}
+      <MessageForm />
 
       <div
         className="map-container-wrapper"

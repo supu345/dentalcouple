@@ -5,11 +5,21 @@ import { BsStars } from "react-icons/bs";
 import { FaUserDoctor } from "react-icons/fa6";
 import { GiToothbrush } from "react-icons/gi";
 import { MdPayments } from "react-icons/md";
+import { motion } from "framer-motion";
+import { SlideUp } from "../utility/animation";
+import { SlideLeft } from "../utility/animation";
+import { SlideRight } from "../utility/animation";
+
 const WhyChoose = () => {
   return (
     <div className="px-7 py-7 bg-[#15B392] text-white">
       {/* top section */}
-      <div className="text-center">
+      <motion.div
+        variants={SlideUp(0.5)}
+        initial="hidden"
+        whileInView={"visible"}
+        className="text-center"
+      >
         {/* Centered Flex Row */}
         <div className="flex justify-center mt-9">
           <div className="flex flex-row gap-2 items-center text-white">
@@ -26,12 +36,17 @@ const WhyChoose = () => {
             We are committed to sustainability. eco-friendly initiatives.
           </p>
         </div>
-      </div>
-      <div className="flex flex-row gap-6">
+      </motion.div>
+      <div className="flex flex-col md:flex-row gap-6">
         {/* left section */}
-        <div className="w-1/3">
+        <motion.div
+          variants={SlideRight(0.4)}
+          initial="hidden"
+          whileInView="visible"
+          className="w-full md:w-1/3"
+        >
           <div className="flex flex-row gap-6 items-center mt-[60px]">
-            <div className="w-[300px] text-end">
+            <div className="w-full md:w-[300px] md:text-end">
               <p className="capitalize text-xl font-bold">experienced doctor</p>
               <p>
                 The goal of our clinic is to provide friendly, caring dentistry
@@ -42,7 +57,7 @@ const WhyChoose = () => {
           </div>
 
           <div className="flex flex-row gap-6 items-center mt-[50px]">
-            <div className="w-[300px] text-end">
+            <div className="w-[300px] md:text-end">
               <p className="capitalize text-xl font-bold">personalized care</p>
               <p>
                 The goal of our clinic is to provide friendly, caring dentistry
@@ -52,7 +67,7 @@ const WhyChoose = () => {
             <GiToothbrush className="text-6xl" />
           </div>
           <div className="flex flex-row gap-6 items-center mt-[50px]">
-            <div className="w-[300px] text-end">
+            <div className="w-[300px] md:text-end">
               <p className="capitalize text-xl font-bold">
                 flexible payment options
               </p>
@@ -63,11 +78,22 @@ const WhyChoose = () => {
             </div>
             <MdPayments className="text-4xl" />
           </div>
-        </div>
-        <div className="w-1/3 bg-white/30 rounded-full my-9">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className=" w-full md:w-1/3 bg-white/30 rounded-full my-9"
+        >
           <img src={Dental4} alt="dental" />
-        </div>
-        <div className="w-1/3">
+        </motion.div>
+        {/* right section */}
+        <motion.div
+          variants={SlideLeft(0.4)}
+          initial="hidden"
+          whileInView="visible"
+          className="w-full md:w-1/3"
+        >
           <div className="flex flex-row gap-6 items-center mt-[50px]">
             <MdPayments className="text-4xl" />
             <div className="w-[300px] text-start">
@@ -104,7 +130,7 @@ const WhyChoose = () => {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { FaCaretDown } from "react-icons/fa";
 import ResponsiveMenu from "./ResponsiveMenu";
 import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
 import { MdLightMode } from "react-icons/md";
 import { MdDarkMode } from "react-icons/md";
-
+import axios from "axios";
+import { toast } from "react-toastify";
+import { Context } from "../../main";
 export const NavbarLinks = [
   {
     name: "Home",
@@ -15,9 +17,10 @@ export const NavbarLinks = [
     name: "About",
     link: "/about",
   },
+
   {
     name: "Blogs",
-    link: "/",
+    link: "/blog",
   },
   {
     name: "Services",
@@ -47,6 +50,28 @@ const DropdownLinks = [
 const Navbar = ({ handleOrderPopup }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [show, setShow] = useState(false);
+  const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+
+  const handleLogout = async () => {
+    await axios
+      .get("http://localhost:5000/api/v1/user/patient/logout", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        toast.success(res.data.message);
+        setIsAuthenticated(false);
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
+  };
+
+  const navigateTo = useNavigate();
+
+  const goToLogin = () => {
+    navigateTo("/login");
+  };
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -89,7 +114,7 @@ const Navbar = ({ handleOrderPopup }) => {
                       </NavLink>
                     </li>
                   ))}
-                  <li className="group relative cursor-pointer">
+                  {/* <li className="group relative cursor-pointer">
                     <a
                       href="/#home"
                       className="flex h-[72px] items-center gap-[2px]"
@@ -111,7 +136,31 @@ const Navbar = ({ handleOrderPopup }) => {
                         ))}
                       </ul>
                     </div>
-                  </li>
+                  </li> */}
+                  <div className="pl-6">
+                    <Link to="/appointment">
+                      <button className="bg-teal-600 p-2 text-white rounded-xl px-3 hover:bg-teal-900 ">
+                        Appointment
+                      </button>
+                    </Link>
+                  </div>
+                  <div className="pl-6">
+                    {isAuthenticated ? (
+                      <button
+                        className="bg-teal-600 p-2 text-white rounded-xl px-3 hover:bg-teal-900"
+                        onClick={handleLogout}
+                      >
+                        LOGOUT
+                      </button>
+                    ) : (
+                      <button
+                        className="bg-teal-600 p-2 text-white rounded-xl px-3 hover:bg-teal-900 "
+                        onClick={goToLogin}
+                      >
+                        LOGIN
+                      </button>
+                    )}
+                  </div>
                 </ul>
               </div>
               {/* <div>
@@ -119,32 +168,7 @@ const Navbar = ({ handleOrderPopup }) => {
                 {darkMode ? <MdLightMode /> : <MdDarkMode />}
               </button>
             </div> */}
-              <div className="flex items-center gap-4">
-                <button
-                  className="bg-gradient-to-r from-primary to-secondary hover:bg-primary transition-all duration-600 text-white px-3 py-1 rounded-full"
-                  onClick={() => {
-                    handleOrderPopup();
-                  }}
-                >
-                  Book Now
-                </button>
-                {/* Mobile Hamburger icon */}
-                <div className="md:hidden block">
-                  {showMenu ? (
-                    <HiMenuAlt1
-                      onClick={toggleMenu}
-                      className="cursor-pointer transition-all"
-                      size={30}
-                    />
-                  ) : (
-                    <HiMenuAlt3
-                      onClick={toggleMenu}
-                      className="cursor-pointer transition-all"
-                      size={30}
-                    />
-                  )}
-                </div>
-              </div>
+            
             </div>
           </div>
           {/* Passing the state to ResponsiveMenu */}

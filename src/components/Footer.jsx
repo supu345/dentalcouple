@@ -1,14 +1,15 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import {
   FaFacebookF,
   FaInstagram,
   FaArrowUp,
   FaWhatsapp,
 } from "react-icons/fa";
-import logo from "../assets/logo-1.png";
-import { Link } from "react-router-dom";
+
 import { motion } from "framer-motion";
 import { SlideUp } from "../utility/animation";
-
+import { SiAdafruit } from "react-icons/si";
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -28,146 +29,130 @@ const Footer = () => {
   };
 
   return (
-    <div>
-      <footer className="relative bg-cover bg-center bg-no-repeat text-white  ">
-        <div className="absolute inset-0 bg-[#15B392] "></div>
-        <motion.div
-          variants={SlideUp(0.5)}
-          initial="hidden"
-          whileInView={"visible"}
-        >
-          <div className="relative w-full flex flex-col md:flex-row px-7 py-6 z-10">
-            <div className="text-center md:w-5/12 sm:text-center md:text-left">
-              <div className="flex flex-col gap-3 w-10/12 mx-auto md:mx-0">
-                <div className="flex items-center  w-full p-2 justify-center md:justify-start">
-                  <img
-                    className="w-[70px] h-[50px] md:w-[80px] md:h-[70px]"
-                    src={logo}
-                    alt="logo"
-                  />
-                </div>
+    <div className="bg-[#15B392] overflow-hidden">
+      <motion.div
+        variants={SlideUp(0.5)}
+        initial="hidden"
+        whileInView={"visible"}
+        className="px-6 py-5  mb-6"
+      >
+        <div className="py-7 flex flex-col md:flex-row lg:flex-row gap-7 text-black">
+          {/* Column 1 */}
+          <div className="w-full md:w-2/5  text-justify">
+            {/* Logo section */}
+            <div className="flex flex-row gap-2 items-center mb-4">
+              <SiAdafruit className="text-2xl text-teal-300" />
+              <h1 className="font-bold text-2xl ">Suparna</h1>
+            </div>
+            <p>
+              Turning vision into value with design that speaks. I create
+              intuitive, impactful experiences for forward-thinking brands and
+              creators
+            </p>
+            <div className="flex justify-center md:justify-start items-center h-[50px] text-black">
+              <div className="flex gap-4">
+                <Link
+                  to="https://web.whatsapp.com/send?phone=+wa.me/8801730702545"
+                  target="_blank"
+                  rel="noopener nofollow"
+                  data-url="https://web.whatsapp.com/send?phone=wa.me/8801730702545"
+                  data-tab-setting="hover"
+                  data-mobile-behavior="disable"
+                  data-flyout="disable"
+                  title="WhatsApp"
+                  onClick={scrollToTop}
+                >
+                  {" "}
+                  <FaWhatsapp className="hover:text-blue-700 text-2xl" />
+                </Link>
+                <Link
+                  to="https://https://www.facebook.com/codewithfoyzun"
+                  target="_blank"
+                  onClick={scrollToTop}
+                >
+                  <FaFacebookF className="hover:text-blue-700  text-2xl" />
+                </Link>
 
-                <p>
-                  “Your Sacred Journey Begins with Broadway — With Authentic
-                  Sunnah-Based Guidance."
-                </p>
-              </div>
-              <div className="flex justify-center md:justify-start items-center h-[50px] text-gray-200">
-                <div className="flex gap-4">
-                  <Link to="/" onClick={scrollToTop}>
-                    <FaWhatsapp className="hover:text-blue-700 text-xl" />
-                  </Link>
-                  <Link to="/" onClick={scrollToTop}>
-                    <FaFacebookF className="hover:text-blue-700" />
-                  </Link>
-                  <Link to="/" onClick={scrollToTop}>
-                    <FaInstagram className="hover:text-red-700" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="text-center md:w-2/12 sm:text-center md:text-left">
-              <div className="flex flex-col gap-3">
-                <p className="font-bold text-lg mb-2 mt-6">Quick Links</p>
-                <ul className="flex flex-col gap-2 text-white">
-                  <li>
-                    <Link to="/" onClick={scrollToTop}>
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/contact" onClick={scrollToTop}>
-                      Contact
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/about" onClick={scrollToTop}>
-                      About
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/hajj-packages" onClick={scrollToTop}>
-                      Hajj Packages
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/umrah-packages" onClick={scrollToTop}>
-                      Umrah Packages
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="text-center md:w-2/12 sm:text-center md:text-left">
-              <div className="flex flex-col gap-3">
-                <p className="font-bold text-lg mb-2 mt-6">Quick Links</p>
-                <ul className="flex flex-col gap-2 text-white">
-                  <li>
-                    <Link to="/" onClick={scrollToTop}>
-                      General Dentistry
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/contact" onClick={scrollToTop}>
-                      General Dentistry
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/about" onClick={scrollToTop}>
-                      General Dentistry
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/hajj-packages" onClick={scrollToTop}>
-                      General Dentistry
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/umrah-packages" onClick={scrollToTop}>
-                      General Dentistry
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="text-center ml-9 w-full md:w-3/12 md:text-left">
-              <div className="flex flex-col gap-3">
-                <p className="font-bold text-lg mb-2 mt-6">Address</p>
-                <ul className="flex flex-col gap-2 text-white">
-                  <li>
-                    Address : Havely Complex (1st Floor Behind Walton Showroom),
-                    Ka-6, Bashundhara Main Road, Dhaka-1229, Bangladesh
-                  </li>
-                  <li>Phone : 01999441515 , 01999551616 </li>
-                  <li>Email : info@dentalcouple.com</li>
-                </ul>
+                <Link to="/" onClick={scrollToTop}>
+                  <FaInstagram className="hover:text-red-700  text-2xl" />
+                </Link>
               </div>
             </div>
           </div>
-          <div
-            onClick={scrollTop}
-            id="scroll"
-            className="fixed bottom-4 right-4 cursor-pointer"
-          >
-            <button className="bg-green-300 p-3 rounded-md shadow-md">
-              <FaArrowUp className="text-black" />
-            </button>
+
+          {/* Column 2 */}
+          <div className="w-full md:w-1/5 text-center">
+            <p className="text-lg font-bold mb-2">Links</p>
+            <ul className="flex flex-col gap-2">
+              <li>
+                <Link to="/" onClick={scrollToTop}>
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" onClick={scrollToTop}>
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" onClick={scrollToTop}>
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" onClick={scrollToTop}>
+                  Blog
+                </Link>
+              </li>
+            </ul>
           </div>
-          <div className="border border-white "></div>
-          <div className="relative z-10 w-full bg-black flex flex-wrap justify-center items-center text-white mx-auto py-5 text-center">
-            <span className="text-white">
-              © Dental Couple 2025, All Rights Reserved | Developed by
-              <Link
-                to="https://codewithfoyzun.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="hover:underline"> Suparna</span>
-              </Link>
-            </span>
+
+          {/* Column 3 */}
+          <div className="w-full md:w-1/5 text-center">
+            <p className="text-lg font-bold mb-2">More Links</p>
+            <ul className="flex flex-col gap-2">
+              <li>
+                <Link to="/testimonials" onClick={scrollToTop}>
+                  Testimonials
+                </Link>
+              </li>
+              <li>
+                <Link to="/portfolio" onClick={scrollToTop}>
+                  Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" onClick={scrollToTop}>
+                  Contact
+                </Link>
+              </li>
+            </ul>
           </div>
-        </motion.div>
-      </footer>
+
+          {/* Column 4 */}
+          <div className="w-full md:w-1/5 text-center">
+            <p className="text-lg font-bold mb-2">Our Services</p>
+            <p>Frontend Developer</p>
+            <p>React Developer</p>
+            <p>Backend Developer</p>
+            <p>Full Stack Developer</p>
+          </div>
+        </div>
+
+        <div
+          onClick={scrollTop}
+          id="scroll"
+          className="fixed bottom-4 right-4 cursor-pointer"
+        >
+          <button className="bg-teal-300 p-3 rounded-full shadow-md">
+            <FaArrowUp className="text-black" />
+          </button>
+        </div>
+        <div className="border border-gray-500/20"></div>
+        <div className="text-center text-black pt-7">
+          <p>© 2025 Foyzun Nahar Suparna | All rights reserved.</p>
+        </div>
+      </motion.div>
     </div>
   );
 };

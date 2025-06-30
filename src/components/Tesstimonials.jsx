@@ -64,7 +64,7 @@ const Tesstimonials = () => {
           variants={SlideRight(0.4)}
           initial="hidden"
           whileInView="visible"
-          className="w-[500px]"
+          className="md:w-[500px]"
         >
           <img
             src="https://images.pexels.com/photos/6627291/pexels-photo-6627291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"

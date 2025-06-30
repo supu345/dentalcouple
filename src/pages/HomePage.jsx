@@ -24,6 +24,13 @@ import { CiCalendarDate } from "react-icons/ci";
 import { FaHandHoldingMedical } from "react-icons/fa";
 import { PiHospitalFill } from "react-icons/pi";
 import Tesstimonials from "../components/Tesstimonials";
+import MessageForm from "../components/MessageForm";
+import Hero from "../components/Hero";
+import { motion } from "framer-motion";
+import { SlideUp } from "../utility/animation";
+import { SlideLeft } from "../utility/animation";
+import { SlideRight } from "../utility/animation";
+import Team from "../components/Team";
 const HomePage = () => {
   const [activeIndex, setActiveIndex] = useState(null); // Default to first item open
 
@@ -88,9 +95,15 @@ const HomePage = () => {
   };
   return (
     <div>
+      <Hero />
       {/* WHO WE ARE */}
-      <div className="flex flex-col md:flex-row lg:flex-row gap-6 mt-[200px] px-8">
-        <div className="w-1/2 item-center">
+      <motion.div
+        variants={SlideRight(0.4)}
+        initial="hidden"
+        whileInView="visible"
+        className="flex flex-col md:flex-row lg:flex-row gap-6 mt-[200px] px-8"
+      >
+        <div className="w-full md:w-1/2 item-center">
           <div className="flex flex-row gap-2 item-center text-[#15B392]">
             <BsStars className="" />
             <p className="uppercase font-bold">About Us</p>
@@ -103,7 +116,7 @@ const HomePage = () => {
             </p>
           </div>
           <div className="text-justify">
-            <p className="mt-4 text-sm w-[500px]">
+            <p className="mt-4 text-sm w-[400px] md:w-[480px] ">
               Every smile has a story — and we’re here to make yours
               unforgettable. At the heart of our care is a commitment to your
               health, comfort, and confidence. Through personalized dental
@@ -137,37 +150,54 @@ const HomePage = () => {
             <p> read more </p>
           </div>
         </div>
-        <div className="w-1/2 ">
-          <div className="relative w-fullh-auto">
+        <div className="w-full md:w-1/2 ">
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="relative w-fullh-auto"
+          >
             {/* Larger background image */}
             <img
               src="https://images.pexels.com/photos/6627533/pexels-photo-6627533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
               alt="photo"
-              className="w-full md:w-[500px] h-[350px] md:h-[350px] object-cover  rounded-4xl "
+              className="w-full md:w-[500px] h-[330px] md:h-[350px] object-cover  rounded-4xl "
             />
             {/* <div className="absolute inset-0 bg-black opacity-30"></div> */}
             {/* Smaller image positioned over the larger one */}
             <img
               src="https://images.pexels.com/photos/6627477/pexels-photo-6627477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
               alt="photo"
-              className="absolute w-[200px] md:w-[400px] h-[300px] md:h-[300px] object-cover top-12 md:top-50 -left-20 md:right-80 border-[5px] md:border-[10px] border-white shadow-lg  rounded-4xl"
+              className="absolute w-[200px]  h-[300px] sm:w-[200px] sm:h-[160px]  md:w-[400px] md:h-[300px] object-cover top-12  sm:top-16 md:top-50 sm:left-8 md:-left-20  md:right-80 border-[5px] md:border-[10px]  sm:border-[6px] border-white shadow-lg  rounded-4xl"
             />
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
+
+      <Team />
       <Service />
       <WhyChoose />
-      <div className="py-9 px-7 flex flex-row gap-5">
-        <div className="w-1/2">
+      <div className="py-9 px-7 flex flex-col md:flex-row gap-5">
+        <motion.div
+          variants={SlideRight(0.4)}
+          initial="hidden"
+          whileInView="visible"
+          className="w-full md:w-1/2"
+        >
           <img
             src="https://images.pexels.com/photos/6627420/pexels-photo-6627420.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             alt="image"
             className="h-[550px] object-cover rounded-4xl"
           />
-        </div>
-        <div className="w-1/2">
+        </motion.div>
+        <motion.div
+          variants={SlideLeft(0.4)}
+          initial="hidden"
+          whileInView="visible"
+          className="w-full md:w-1/2"
+        >
           <div className="px-6">
-            <div className="flex  mt-9 mb-5">
+            <div className="flex flex-row mt-9 mb-5">
               <div className="flex flex-row gap-2 items-center text-[#15B392]">
                 <BsStars />
                 <p className="uppercase font-bold text-[#15B392]">
@@ -210,10 +240,11 @@ const HomePage = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
       <Tesstimonials />
       <Blogs />
+      {/* <MessageForm /> */}
     </div>
   );
 };

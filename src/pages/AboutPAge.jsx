@@ -2,7 +2,11 @@ import React from "react";
 import { BsStars } from "react-icons/bs";
 import { TbDental } from "react-icons/tb";
 import Service from "../components/Service";
-
+import { motion } from "framer-motion";
+import { SlideUp } from "../utility/animation";
+import { SlideLeft } from "../utility/animation";
+import { SlideRight } from "../utility/animation";
+import Team from "../components/Team";
 const AboutPage = () => {
   return (
     <div className="mt-[80px]">
@@ -28,15 +32,20 @@ const AboutPage = () => {
         </div>
       </div>
       {/*About Us*/}
-      <div className="px-6 py-[100px] flex flex-col md:flex-row gap-5">
-        <div className="w-1/2">
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+        className="px-6 py-[100px] flex flex-col md:flex-row gap-5"
+      >
+        <div className="md:w-1/2">
           <img
             src="https://images.pexels.com/photos/7195317/pexels-photo-7195317.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             alt="photo"
             className="rounded-2xl h-[600px] w-full object-cover"
           />
         </div>
-        <div className="w-1/2">
+        <div className="md:w-1/2">
           <div className="flex flex-row gap-2 item-center  text-teal-700 px-7 py-9">
             <BsStars className="" />
             <p className="uppercase font-bold">About Us</p>
@@ -81,8 +90,8 @@ const AboutPage = () => {
             </div>
           </div>
         </div>
-      </div>
-
+      </motion.div>
+      <Team />
       {/*service */}
       <div>
         <Service />

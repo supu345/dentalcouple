@@ -6,6 +6,8 @@ import { FaTeeth } from "react-icons/fa6";
 import { TbDental, TbDentalBroken } from "react-icons/tb";
 import doctor from "../assets/doctor.png";
 import { BsStars } from "react-icons/bs";
+import { motion } from "framer-motion";
+import { SlideUp } from "../utility/animation";
 const ServicesPage = () => {
   return (
     <div className="mt-[80px]">
@@ -35,13 +37,18 @@ const ServicesPage = () => {
 
       {/*Parallex */}
 
-      <div className="py-[100px] px-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  gap-8">
+      <motion.div
+        variants={SlideUp(0.5)}
+        initial="hidden"
+        whileInView={"visible"}
+        className="py-[100px] px-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  gap-8"
+      >
         <div className=" bg-teal-100 p-8 rounded-2xl">
           <LiaTeethOpenSolid className="text-6xl text-teal-700" />
           <p className="py-6 text-3xl font-bold text-gray-600">
             Complete Dental & Medical Care
           </p>
-          <p className="w-[480px]">
+          <p className="md:w-[480px]">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry’s standard dummy text
             ever since simply dummy.
@@ -52,7 +59,7 @@ const ServicesPage = () => {
           <p className="py-6 text-3xl font-bold text-gray-600">
             Healthy Smiles & Healthy Lives
           </p>
-          <p className="w-[480px]">
+          <p className="md:w-[480px]">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry’s standard dummy text
             ever since simply dummy.
@@ -63,7 +70,7 @@ const ServicesPage = () => {
           <p className="py-6 text-3xl font-bold text-gray-600">
             Advanced Healthcare Solutions
           </p>
-          <p className="w-[480px]">
+          <p className="md:w-[480px]">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry’s standard dummy text
             ever since simply dummy.
@@ -74,7 +81,7 @@ const ServicesPage = () => {
           <p className="py-6 text-3xl font-bold text-gray-600">
             Healthy Smiles & Healthy Lives
           </p>
-          <p className="w-[480px]">
+          <p className="md:w-[480px]">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry’s standard dummy text
             ever since simply dummy.
@@ -85,7 +92,7 @@ const ServicesPage = () => {
           <p className="py-6 text-3xl font-bold text-gray-600">
             Healthy Smiles & Healthy Lives
           </p>
-          <p className="w-[480px]">
+          <p className="md:w-[480px]">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry’s standard dummy text
             ever since simply dummy.
@@ -96,13 +103,13 @@ const ServicesPage = () => {
           <p className="py-6 text-3xl font-bold text-gray-600">
             Healthy Smiles & Healthy Lives
           </p>
-          <p className="w-[480px]">
+          <p className="md:w-[480px]">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry’s standard dummy text
             ever since simply dummy.
           </p>
         </div>
-      </div>
+      </motion.div>
       {/*doctor */}
       <div className="flex flex-col md:flex-row">
         <div className="text-black bg-teal-900">
@@ -117,7 +124,11 @@ const ServicesPage = () => {
           </p>
         </div>
         <div className="bg-teal-900 w-full">
-          <img src={doctor} alt="photo" className="-mt-[100px] ml-[300px]" />
+          <img
+            src={doctor}
+            alt="photo"
+            className="md:-mt-[100px] md:ml-[300px]"
+          />
         </div>
       </div>
     </div>
